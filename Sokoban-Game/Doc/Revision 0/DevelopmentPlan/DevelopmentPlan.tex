@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+\title{Development Plan}
+\author{Group 13}
+\date{September 2018}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+\section{Development Plan}
+\subsection{Team Information}
+\begin{tabbing}
+Group members : \= Gurpartap Kaler,  kalerg1,400062310\\
+		      \> Freddie Yan,   yanz20, 400079138\\
+		      \> Sagar Thomas,   thomas12, 400054333
+\end{tabbing}
+
+\subsection{Team Meeting Plan}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+    \hline
+    Meeting & Date & Location & Topic & Materials & Decisions\\
+     Oder &&&&&  \\
+     \hline
+     1 & Sept 25th 9:00pm & ITB & Dev. Plan &  & Work assigned for each member.\\
+     \hline
+     2 & Oct 2nd 9:00pm & Thode & Req. Doc Rev0 &  & Part of req. doc. assigned to each member. \\
+     \hline
+     3 & Oct 9th 9:00pm & Thode & PoC Demo & & Worked on PoC demo together. \\
+     \hline
+     4 & Oct 16th 9:00pm & Thode & PoC Demo Finalized & & Finalized prototype of demo file \\
+     \hline
+     5 & Oct 23rd 9:00pm & Thode & Test Plan Rev0 & & TBD\\
+     \hline
+     6 & Oct 30th 9:00pm & Thode & Design and Doc Rev0 & &TBD\\
+     \hline
+     7 & Nov 6th 9:00pm & Thode & Rev0 Demo & &TBD\\
+     \hline
+     8 & Nov 13rd 9:00pm & Thode & Final Demo & &TBD\\
+     \hline
+    9 & Nov 13rd 9:00pm & Thode & Final Demo & &TBD\\
+     \hline
+
+\end{tabularx}
+     Rules for meeting:\\
+     1.Meeting would be held in Thode library every Tuesday after Lab section, every member must arrive before 9:15pm. \\
+     2.The purposes for those meetings include: (1).review all the sources we have created. (2)contribute ideas for the next deliverable. (3)assign works to each member.\\
+     3.No phone use during the meeting.\\
+     4.Meeting duration is about 2 hours.
+\subsection{Team Communication Plan}
+Combination of git, email and Facebook messenger will be used for the purpose of team communication.\\
+1.Git: git would be used to keep updating the newest version of our project, so every member can push their contributes into the project. \\
+2.Email: email would be used for the purpose of file sharing.This is the most efficient and secure way to share and save project details.\\
+3.Facebook messenger: messenger is used for daily communication.Since every member is in the same group, we are able to talk about the ideas and ask questions about these project. 
+
+
+
+\subsection{Team Member Roles}
+
+There will be no team leader in our team. All decisions will be made together as a team. All tasks will be distributed as a team. \\
+
+\begin{tabular}{|c|c|c|}
+\hline
+     Name & Role & Expertise \\
+     \hline
+     Gurpartap Kaler & Developer & Expert on Documentation and Python \\
+     \hline
+     Freddie Yan & Developer & Expert on LaTeX and Python \\
+     \hline
+     Sagar Thomas & Developer & Expert on Git and Python \\
+     \hline
+\end{tabular}
+\captionof{table}{Team Member Roles} 
+
+All group members have the role of a developer, as we will be working together to create the software. Furthermore, every group member has their own expertise, this helps the team to locate those who are strong in a certain subject.
+
+\subsection{Git Workflow Plan}
+
+The Git Workflow Plan that we will implement in this project will be centralized and consist of an origin/master and develop branch, as well as feature branches. The master branch will only be used for production-ready code and the develop branch is where all the development will take place. Feature branches will be created as necessary from the develop branch and merged back to the develop branch when complete and tested. Tags will be used to mark important merges/commits such as version numbering for new releases/updates as well as marking milestones throughout the course of this project.
+
+\subsection{Proof of Concept Demonstration Plan}
+
+\subsubsection{Most Significant Risk}
+
+The most significant risk of our game, Sokoban, will be having the game crash on the users PC. Another risk is that our game could cause the users PC to hang and not respond, due to keyboard inputs.  In order to overcome this risk, we have to make sure that the game is tested thoroughly and rigorously on multiple different operating systems and computers.
+
+\subsubsection{Will a part of the implementation be difficult?}
+
+Breaking the game down into workable and sizable modules will be difficult, since we are re-implementing the Java applet into Python. I also feel like optimizing the program will be difficult, as Python has different ways to optimize than Java. Furthermore, I feel like our group will be challenged with weighing the importance between performance and readability.
+
+\subsubsection{Will testing be difficult?}
+
+Unit testing the game will not be difficult because we have worked with Python unit testing in SFWRENG 2AA4, mainly PyUnit. Testing the functionality and logic of the game will be challenging, we will have to let the public play the game and give us feedback. This way we can find bugs with the logic in the program. Another alternative to demoing the game, is creating automated testing, which will be very difficult as none of us have experience with it.
+
+\subsubsection{Is a required library difficult to install?}
+
+No, the required library is not difficult to install. Our re-implementation will be in Python, and all libraries used will be implanted in our program.
+
+\subsubsection{Will portability be a concern?}
+
+Portability will not be a concern, due to our group using Python for the re-implementation of Sokoban. Python is available for every operating system (Windows, Linux, and Mac OS). Furthermore, once downloaded initially, our game will be available to the user locally.
+
+\subsection{Technology}
+
+\textbf{Programming Language}: Python version 3.x.x will be used for this project. The project will not support Python version 2.x.x due to restrictions with the game framework. 
+\\[12pt]
+\textbf{Game Framework}: We will be using Pygame (latest version) to power the entire game.
+\\[12pt]
+\textbf{Build Tool}: Make - a makefile will handle all build, run and test tasks. The makefile will use pip (Python Package Manager) to handle all dependencies.
+\\[12pt]
+\textbf{IDE/Text Editor}: Each team member will be using any text editor of their choice. (VS Code, Atom, Vim, Sublime etc.) As all testing, building and running will be done on the terminal, there is no reliance on a specific IDE.
+\\[12pt]
+\textbf{Testing Framework}: PyUnit - popular unit testing framework
+\\[12pt]
+\textbf{Document Generation}: Sphinx - Extremely popular and simple documentation generator for Python.
+
+
+\subsection{Coding Style}
+The coding style we will use in this project will be a combination of the
+\href{https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style#Python_Practices}{\color{blue}{Mozilla Python Coding Style}}
+and 
+\href{https://www.python.org/dev/peps/pep-0008/}{\color{blue}{PEP 8}},
+Python Foundation's own style guide. In order to enforce these principles, we will use 
+\href{https://www.pylint.org/}{\color{blue}{pylint}}
+to frequently check the source code for style consistency. 
+
+\subsection{Project Schedule}
+
+The GanttChart file and PDF are available in the \href{https://gitlab.cas.mcmaster.ca/kalerg1/se3xa3/blob/master/Sokoban-Game/ProjectSchedule/}{\color{blue}{Project Schedule}} folder. These files will be updated weekly.
+
+\subsection{Project Review (for Revision 1)}
+\end{document}

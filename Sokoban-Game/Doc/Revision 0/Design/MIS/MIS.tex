@@ -1,0 +1,307 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[utf8]{inputenc}
+
+
+\newcounter{mnum}
+\newcommand{\mthemnum}{M\themnum}
+\newcommand{\mref}[1]{M\ref{#1}}
+
+\title{Module Interface Specification}
+\author{Group 13
+        \\The Box Group
+		\\ Gurpartap Kaler, kalerg1
+		\\ Sagar Thomas, thomas12
+		\\ Freddie Yan, yanz20}
+\date{November 9, 2018}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+
+\newpage
+
+\section{Module Hierarchy}
+
+\begin{description}
+    \item [\refstepcounter{mnum} \mthemnum \label{m1}:] Hardware-Hiding Module
+    \item [\refstepcounter{mnum} \mthemnum \label{m2}:] Behaviour-Hiding Module: SceneManager Module
+     \item [\refstepcounter{mnum} \mthemnum \label{m3}:] Behaviour-Hiding Module: Scene Module
+    \item [\refstepcounter{mnum} \mthemnum \label{m4}:] Behaviour-Hiding Module: Character Module
+    \item [\refstepcounter{mnum} \mthemnum \label{m5}:] Behaviour-Hiding Module: Box Module
+    \item [\refstepcounter{mnum} \mthemnum \label{m6}:] Behaviour-Hiding Module: Game Module
+\end{description}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Level 1} & \textbf{Level 2}\\
+\midrule
+
+{Hardware-Hiding Module} & ~ \\
+\midrule
+
+\multirow{4}{0.3\textwidth}{Behaviour-Hiding Module} & SceneManager Module \\
+& Scene Module \\
+& Character Module\\
+& Box Module\\
+& Game Module\\
+\midrule
+
+\multirow{1}{0.3\textwidth}{Software Decision Module} & N/A (No generic modules) \\
+\bottomrule
+
+\end{tabular}
+\caption{Module Hierarchy}
+\label{TblMH}
+\end{table}
+
+\section{MIS of Character Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+KeyT = \{UP,DOWN,LEFT,RIGHT\}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+ init&integer,integer,integer  &-  &invalid\_input \\ \hline
+ move& KeyT & - &- \\ \hline
+ getX& KeyT, integer & integer &- \\ \hline
+ getY& KeyT, integer & integer &- \\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+x:integer//x-coordinate of the character\\
+y:integer//y-coordinate of the character\\
+speed:integer//length of a cell in maze
+\subsubsection{Environmental Variables}
+None
+\subsubsection{Assumptions}
+The constructor Character is called for each object instance before any other
+access routine is called for that object.  The constructor cannot be called on
+an existing object.
+
+\subsubsection{Access Program Semantics}
+init(i,j,s):\\
+transition:x := i*s, y := j*s, speed := s.\\
+exception:raise invalid\_argument if any of the inputs is not integer.\\
+move(k):\\
+transition:if k = UP: y:= y-speed, if k = DOWN: y:= y+speed,\\
+if k = LEFT: x:= x-speed, if k = RIGHT: x:= x+speed.\\
+exception:None.\\
+getX(k,i):\\
+Output:if k = UP: out:= x, if k = DOWN: out:= x,\\
+if k = LEFT: out:=x-i*speed, if k = RIGHT: out:= x+i*speed.\\
+exception:None.\\
+getY(k,i):\\
+Output:if k = UP: out:= y-i*speed, if k = DOWN: out:= y+i*speed,\\
+if k = LEFT: out:=y, if k = RIGHT: out:= y.\\
+exception:None.
+
+\section{MIS of Box Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+KeyT = \{UP,DOWN,LEFT,RIGHT\}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+ init&integer,integer,integer  &-  &invalid\_input \\ \hline
+ move& KeyT & - &- \\ \hline
+ getX&  & integer &- \\ \hline
+ getY&  & integer &- \\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+x:integer//x-coordinate of the Box\\
+y:integer//y-coordinate of the Box\\
+speed:integer//length of a cell in maze
+\subsubsection{Environmental Variables}
+None
+\subsubsection{Assumptions}
+The constructor Box is called for each object instance before any other
+access routine is called for that object.  The constructor cannot be called on
+an existing object.
+
+\subsubsection{Access Program Semantics}
+init(i,j,s):\\
+transition:x := i*s, y := j*s, speed := s.\\
+exception:raise invalid\_argument if any of the inputs is not integer.\\
+move(k):\\
+transition:if k = UP: y:= y-speed, if k = DOWN: y:= y+speed,\\
+if k = LEFT: x:= x-speed, if k = RIGHT: x:= x+speed.\\
+exception:None.\\
+getX():\\
+Output:out:= x.\\
+exception:None.\\
+getY():\\
+Output:out:= y.\\
+exception:None.
+
+
+
+\section{MIS of Scene Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+None
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+ init&Character,Sequence of Box, Sequence of integer  &-  & \\ \hline
+
+\end{tabular}
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Char: Character//
+Boxs:Sequence of Box//
+maze:Sequence of integer
+\subsubsection{Environmental Variables}
+None
+\subsubsection{Assumptions}
+The constructor Scene is called for each object instance before any other
+access routine is called for that object.  The constructor cannot be called on
+an existing object.
+\subsubsection{Access Program Semantics}
+init(c,b,s):\\
+transition: Char:= c, Boxs:= b, maze:= s.\\
+exception:None
+
+\section{MIS of SceneManager Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+init &-  &-  &- \\ \hline
+ setup\_scenes&Scene,Scene  & - &- \\ \hline
+ update & Pygame.KeyEvent & - & -\\ \hline
+ switch\_scene& -  & - & -\\ \hline
+ get\_event& - & - & -\\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+scenes: Sequence of scenes // Contains all scenes in the game\\ 
+done: Boolean // Contains the current running status of the game\\
+scene\_name: String // Name of the current running scene\\
+scene: Scene //The current running Scene\\
+now: Integer // Current run-time of the game
+
+\subsubsection{Environmental Variables}
+Pygame.KeyEvent
+\subsubsection{Assumptions}
+The state variables will be assigned values before any scene management functions, such as switch\_scene are called
+\subsubsection{Access Program Semantics} 
+
+SceneManager(): \\
+Input: none \\
+Transition: Load up all the game scenes \\
+Output: Assign initial values to state variables \\
+Exceptions: None \\ 
+
+setup\_scenes(scenes, start\_scene): \\
+Input: scenes, start\_scene \\
+Transition: Set the current scene to the start\_scene and store the rest of the scenes \\
+Output: None \\
+Exceptions: None \\
+
+update(keys, now): \\
+Input: Pygame.KeyEvent, now \\
+Transition: Checks for key events that quit the game. If not, proceed to update the current scene. \\
+Output: None \\
+Exceptions: None \\
+
+switch\_scene(): \\
+Input: None \\
+Transition: Changes the current scene to the next planned scene. \\
+Output: New Scene \\
+Exceptions: None \\
+
+get\_event(event): \\
+Input: None \\
+Transition: Receives any event passed from the main game loop. Passes it to the current scene. \\
+Output: None \\
+Exceptions: None \\
+
+
+\section{MIS of Game Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+init & - & - & -\\ \hline
+ update & - & - & -\\ \hline
+ event\_loop& - & - & -\\ \hline
+ run & - & - & -\\ \hline
+ &  &  & \\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+now: Integer // The current run-time of the game \\
+done: Boolean //Status of whether the game is complete or not \\
+clock: Pygame.Clock //Clock object keeping track of fps \\
+keys: Pygame.KeyEvent // Top level key events to be passed down to scenes\\
+scene\_manager: SceneManager // Instance of the SceneManager module to manage all the games of the scene \\
+screen: Pygame.Surface // Used for rendering game elements to the screen \\
+\subsubsection{Environmental Variables}
+Pygame.Clock \\
+Pygame.KeyEvent \\
+Pygame.Surface \\
+\subsubsection{Assumptions}
+None.
+\subsubsection{Access Program Semantics}
+
+Game(): \\
+Input: None
+Transition: Initializes all state variables to their default \\
+Output: None \\
+Exceptions: None \\
+
+update(): \\
+Input: None
+Transition:  Updates the current run-time of the game\\
+Output: None \\
+Exceptions: None \\
+
+event\_loop(): \\
+Input: None
+Transition:  Passes the Pygame events into scene\_manager \\
+Output: None \\
+Exceptions: None \\
+
+run(): \\
+Input: None
+Transition:  Main game loop. Calls event\_loop and update repeatedly. \\
+Output: None \\
+Exceptions: None \\
+
+
+\section{Major Revision History}
+November 9, 2018 - Revision 0
+
+\end{document}

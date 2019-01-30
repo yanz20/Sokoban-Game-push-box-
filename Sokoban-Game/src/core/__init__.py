@@ -1,0 +1,1 @@
+# This file defines the core package as a module
